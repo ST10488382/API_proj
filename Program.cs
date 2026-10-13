@@ -38,6 +38,7 @@ app.UseHttpsRedirection();
 // Authentication MUST precede Authorization
 app.UseAuthentication();
 app.UseAuthorization();
+// updating code comment
 
 app.MapControllers();
 

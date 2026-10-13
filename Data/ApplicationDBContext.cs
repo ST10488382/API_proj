@@ -8,11 +8,15 @@ namespace API_proj.Data
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
         {
-
         }
-        //DbSet<T> property here for each model,
-        //e.g public DbSet<User> Users { get; set; }
+
+        public DbSet<Organiser> Organisers { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Participants { get; set; }
+        public DbSet<Enrolment> Enrolments { get; set; }
+        public DbSet<Result> Results { get; set; }
     }
-}      
-    
+}
+
 

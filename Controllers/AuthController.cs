@@ -48,6 +48,7 @@ namespace API_proj.Controllers
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
+        // Login endpoint handling cookie-based session establishment
         {
             var user = await _context.Participants.FirstOrDefaultAsync(u => u.Email == dto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))

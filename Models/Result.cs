@@ -12,6 +12,7 @@ namespace API_proj.Models
         public Enrolment? Enrolment { get; set; }
 
         public TimeSpan? FinishTime { get; set; }
+        // Race completion time and finishing position properties
         public int? Position { get; set; }
         public string Status { get; set; } = "DNF";
     }

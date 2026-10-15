@@ -3,6 +3,7 @@
 namespace API_proj.Models
 {
     public class User
+    // User model property definitions for authentication credentials
     {
         [Key]
         public int ParticipantId { get; set; }

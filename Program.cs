@@ -40,6 +40,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 // updating code comment
 //project implementation
+// Configure DI container services and JSON serialization settings
 
 app.MapControllers();
 

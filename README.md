@@ -14,3 +14,5 @@ A RESTful backend service built with .NET 8 and Entity Framework Core for managi
    git clone [https://github.com/ST10488382/API_proj.git](https://github.com/ST10488382/API_proj.git)
    dotnet restore
    dotnet run
+<img width="1313" height="440" alt="workflow screenshot" src="https://github.com/user-attachments/assets/be26d9f5-37a6-4bc5-bad8-1ff9e2ae4aa2" />
+

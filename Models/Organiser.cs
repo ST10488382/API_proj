@@ -9,6 +9,7 @@ namespace API_proj.Models
         public string OrganiserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
+        // Auto-generated timestamp for organiser creation date
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

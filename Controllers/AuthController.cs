@@ -18,7 +18,7 @@ namespace API_proj.Controllers
         {
             _context = context;
         }
-
+        // Secure registration endpoint using BCrypt password hashing
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {

@@ -12,6 +12,7 @@ namespace API_proj.Models
         public Event? Event { get; set; }
 
         public string CategoryName { get; set; } = string.Empty;
+        // Race distance and entry fee properties for event categories
         public decimal DistanceKm { get; set; }
         public decimal EntryFee { get; set; } = 0;
         public int MaxParticipants { get; set; }

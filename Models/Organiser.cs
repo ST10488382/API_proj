@@ -3,7 +3,7 @@
 namespace API_proj.Models
 {
     public class Organiser
-    {
+    {// Organiser profile schema representation
         [Key]
         public int OrganiserId { get; set; }
         public string OrganiserName { get; set; } = string.Empty;

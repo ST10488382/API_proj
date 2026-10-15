@@ -43,5 +43,6 @@ app.UseAuthorization();
 // Configure DI container services and JSON serialization settings
 
 app.MapControllers();
+// Map attribute-routed API controllers for HTTP endpoints
 // Ensure cookie authentication middleware runs prior to authorization
 app.Run();

@@ -15,6 +15,7 @@ namespace API_proj.Models
         // Race distance and entry fee properties for event categories
         public decimal DistanceKm { get; set; }
         public decimal EntryFee { get; set; } = 0;
+        // Maximum participant capacity constraint field
         public int MaxParticipants { get; set; }
     }
 }

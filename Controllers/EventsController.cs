@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace API_proj.Controllers
 // Authorisation attribute check enforcing organiser role permissions
+// Ownership verification logic protecting event update operations
 {
     [Route("api/[controller]")]
     [ApiController]

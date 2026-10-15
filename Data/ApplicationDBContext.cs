@@ -7,7 +7,7 @@ namespace API_proj.Data
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
-        {
+        {// Entity Framework Core database context configuration
         }
 
         public DbSet<Organiser> Organisers { get; set; }

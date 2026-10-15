@@ -9,6 +9,7 @@ namespace API_proj.Data
             : base(options)
         {// Entity Framework Core database context configuration
         }
+        // DbSet mappings for relational database schema tables
 
         public DbSet<Organiser> Organisers { get; set; }
         public DbSet<Event> Events { get; set; }

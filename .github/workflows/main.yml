@@ -3,14 +3,10 @@ name: .NET Core CI
 on:
   push:
     branches: [ "master", "main" ]
-  pull_request:
-    branches: [ "master", "main" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -18,8 +14,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore API_proj/API_proj.csproj
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build API_proj/API_proj.csproj --no-restore

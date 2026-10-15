@@ -15,6 +15,7 @@ namespace API_proj.Models
 
         public DateTime EnrolmentDate { get; set; } = DateTime.Now;
         public int RaceNumber { get; set; }
+        // Payment status tracking for participant entry fees
         public string PaymentStatus { get; set; } = "Pending";
     }
 }

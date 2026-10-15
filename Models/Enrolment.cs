@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace API_proj.Models
 {
     public class Enrolment
-    {
+    {// Foreign key mapping for participant race enrolment records
         [Key]
         public int EnrolmentId { get; set; }
         public int ParticipantId { get; set; }

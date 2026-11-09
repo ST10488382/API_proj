@@ -6,8 +6,6 @@ using API_proj.Models;
 using System.Security.Claims;
 
 namespace API_proj.Controllers
-// Authorisation attribute check enforcing organiser role permissions
-// Ownership verification logic protecting event update operations
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -38,16 +36,31 @@ namespace API_proj.Controllers
         [Authorize(Roles = "Organiser")]
         public async Task<ActionResult<Event>> CreateEvent([FromBody] Event eventItem)
         {
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (int.TryParse(userIdString, out int organiserId))
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue("sub");
+
+            if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int organiserId))
             {
                 eventItem.OrganiserId = organiserId;
+            }
+            else
+            {
+                var email = User.FindFirstValue(ClaimTypes.Email) ?? User.Identity?.Name;
+                var organiser = await _context.Set<Organiser>().FirstOrDefaultAsync(o => o.Email == email);
+
+                if (organiser != null)
+                {
+                    eventItem.OrganiserId = organiser.OrganiserId;
+                }
+                else
+                {
+                    return BadRequest(new { message = "Associated organiser profile not found for the current user." });
+                }
             }
 
             _context.Events.Add(eventItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEvent), new { id = eventItem.EventId }, eventItem);
+            return Ok(eventItem);
         }
 
         [HttpPut("{id}")]
@@ -57,7 +70,7 @@ namespace API_proj.Controllers
             var existingEvent = await _context.Events.FindAsync(id);
             if (existingEvent == null) return NotFound();
 
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue("sub");
             if (int.TryParse(userIdString, out int organiserId) && existingEvent.OrganiserId != organiserId)
             {
                 return Forbid();
@@ -79,7 +92,7 @@ namespace API_proj.Controllers
             var eventItem = await _context.Events.FindAsync(id);
             if (eventItem == null) return NotFound();
 
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue("sub");
             if (int.TryParse(userIdString, out int organiserId) && eventItem.OrganiserId != organiserId)
             {
                 return Forbid();

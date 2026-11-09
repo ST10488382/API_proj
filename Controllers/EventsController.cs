@@ -50,6 +50,7 @@ namespace API_proj.Controllers
 
                 if (organiser != null)
                 {
+
                     eventItem.OrganiserId = organiser.OrganiserId;
                 }
                 else

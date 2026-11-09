@@ -41,6 +41,7 @@ namespace API_proj.Controllers
             if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int organiserId))
             {
                 eventItem.OrganiserId = organiserId;
+
             }
             else
             {

@@ -18,12 +18,12 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Build Web API
-      run: |
-        dotnet restore API_proj/API_proj1.csproj
-        dotnet build API_proj/API_proj1.csproj --configuration Release --no-restore
+    - name: Restore dependencies
+      run: dotnet restore
 
-    - name: Build MVC Project
+    - name: Build all project files
       run: |
-        dotnet restore RaceDay.web/RaceDay.web.csproj
-        dotnet build RaceDay.web/RaceDay.web.csproj --configuration Release --no-restore
+        for proj in $(find . -name "*.csproj"); do
+          echo "Building $proj"
+          dotnet build "$proj" --configuration Release --no-restore
+        done

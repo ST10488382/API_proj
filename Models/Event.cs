@@ -11,6 +11,7 @@ namespace API_proj.Models
         [ForeignKey("OrganiserId ")]
         public Organiser? Organiser { get; set; }
 
+
         public string EventName { get; set; } = string.Empty;
         public DateTime EventDate { get; set; }
         public string Location { get; set; } = string.Empty;

@@ -65,6 +65,7 @@ namespace API_proj.Controllers
 
                     eventItem.OrganiserId = organiser.OrganiserId;
                 }
+
                 else
                 {
                     return BadRequest(new { message = " Associated organiser profile not found for the current user." });

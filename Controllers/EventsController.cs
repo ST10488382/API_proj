@@ -39,6 +39,7 @@ namespace API_proj.Controllers
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? User.FindFirstValue("sub");
 
             if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int organiserId))
+
             {
                 eventItem.OrganiserId = organiserId;
 

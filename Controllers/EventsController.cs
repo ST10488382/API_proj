@@ -11,6 +11,7 @@ namespace API_proj.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class EventsController : ControllerBase
+
     {
         private readonly ApplicationDBContext _context;
 

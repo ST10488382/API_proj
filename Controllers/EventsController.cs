@@ -42,6 +42,7 @@ namespace API_proj.Controllers
             {
                 eventItem.OrganiserId = organiserId;
 
+
             }
             else
             {

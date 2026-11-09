@@ -31,6 +31,7 @@ namespace API_proj.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
+
         {
             var ev = await _context.Events.Include(e => e.Organiser).FirstOrDefaultAsync(e => e.EventId == id);
             if (ev == null) return NotFound();

@@ -82,6 +82,7 @@ namespace API_proj.Controllers
             return Ok(eventItem);
         }
 
+
         [HttpPut("{id}")]
         [Authorize(Roles = " Organiser")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Event updatedEvent)

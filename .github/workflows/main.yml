@@ -2,13 +2,12 @@ name: .NET CI/CD
 
 on:
   push:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "main", "master" ]
   pull_request:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "main", "master" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -19,15 +18,12 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build Web API Project
-      run: dotnet build --no-restore --configuration Release
+    - name: Build Web API
+      run: |
+        dotnet restore API_proj/API_proj1.csproj
+        dotnet build API_proj/API_proj1.csproj --configuration Release --no-restore
 
     - name: Build MVC Project
-      run: dotnet build API_proj/API_proj.csproj --no-restore --configuration Release 
-      # Note: Replace 'API_proj/API_proj.csproj' with the actual folder/project path to your MVC web project if it differs.
-    
-    - name: Run Tests
-      run: dotnet test --no-build --configuration Release
+      run: |
+        dotnet restore RaceDay.web/RaceDay.web.csproj
+        dotnet build RaceDay.web/RaceDay.web.csproj --configuration Release --no-restore

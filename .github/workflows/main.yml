@@ -1,19 +1,33 @@
-name: .NET Core CI
+name: .NET CI/CD
 
 on:
   push:
-    branches: [ "master", "main" ]
+    branches: [ "main", "master", "dev" ]
+  pull_request:
+    branches: [ "main", "master", "dev" ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
+    
+    - name: Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: '8.0.x'
+
     - name: Restore dependencies
-      run: dotnet restore API_proj.csproj
-    - name: Build
-      run: dotnet build API_proj.csproj --no-restore
+      run: dotnet restore
+
+    - name: Build Web API Project
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Build MVC Project
+      run: dotnet build API_proj/API_proj.csproj --no-restore --configuration Release 
+      # Note: Replace 'API_proj/API_proj.csproj' with the actual folder/project path to your MVC web project if it differs.
+    
+    - name: Run Tests
+      run: dotnet test --no-build --configuration Release

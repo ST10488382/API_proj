@@ -30,6 +30,7 @@ namespace API_proj.Controllers
         }
 
         [HttpGet("{id}")]
+
         public async Task<ActionResult<Event>> GetEvent(int id)
 
         {

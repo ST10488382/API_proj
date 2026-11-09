@@ -7,6 +7,7 @@ namespace API_proj.Models
     {
         [Key]
         public int EventId { get; set; }
+
         public int OrganiserId { get; set; }
         [ForeignKey("OrganiserId ")]
         public Organiser? Organiser { get; set; }

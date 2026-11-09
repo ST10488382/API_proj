@@ -40,6 +40,7 @@ namespace API_proj.Controllers
         }
 
         [HttpPost]
+
         [Authorize(Roles = "Organiser")]
         public async Task<ActionResult<Event>> CreateEvent([FromBody] Event eventItem)
         {

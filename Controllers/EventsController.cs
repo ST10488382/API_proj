@@ -53,7 +53,7 @@ namespace API_proj.Controllers
                 }
                 else
                 {
-                    return BadRequest(new { message = "Associated organiser profile not found for the current user." });
+                    return BadRequest(new { message = " Associated organiser profile not found for the current user." });
                 }
             }
 

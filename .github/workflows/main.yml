@@ -18,12 +18,10 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build all project files
+    - name: Build and Test Projects
       run: |
         for proj in $(find . -name "*.csproj"); do
-          echo "Building $proj"
+          echo "Restoring and building $proj"
+          dotnet restore "$proj"
           dotnet build "$proj" --configuration Release --no-restore
         done

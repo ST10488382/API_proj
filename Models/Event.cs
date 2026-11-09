@@ -14,6 +14,6 @@ namespace API_proj.Models
         public string EventName { get; set; } = string.Empty;
         public DateTime EventDate { get; set; }
         public string Location { get; set; } = string.Empty;
-        public string Status { get; set; } = "Upcoming";
+        public string Status { get; set; } = "Upcoming ";
     }
 }

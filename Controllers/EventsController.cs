@@ -22,6 +22,7 @@ namespace API_proj.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
+
         {
             return await _context.Events.Include(e => e.Organiser).ToListAsync();
         }

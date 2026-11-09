@@ -64,7 +64,7 @@ namespace API_proj.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Organiser")]
+        [Authorize(Roles = " Organiser")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Event updatedEvent)
         {
             var existingEvent = await _context.Events.FindAsync(id);

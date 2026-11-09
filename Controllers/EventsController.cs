@@ -62,6 +62,7 @@ namespace API_proj.Controllers
             _context.Events.Add(eventItem);
             await _context.SaveChangesAsync();
 
+
             return Ok(eventItem);
         }
 
